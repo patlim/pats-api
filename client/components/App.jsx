@@ -1,8 +1,18 @@
 import React from 'react'
 
+// Causing major issues
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Genrenator from './Genrenator'
+import Nav from "./Nav";
+
 const App = () => {
   return (
-    <h1>React development has begun!</h1>
+    <>
+      <Nav />
+      <br/>
+      <Genrenator />
+    </>
   )
 }
 
