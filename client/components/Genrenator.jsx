@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button'
 const genreUrl = 'https://binaryjazz.us/wp-json/genrenator/v1/genre'
 const giphyKey = 'WxVWUK3MGQVmOIvQUHUMsRODwCw1JViY'
 const giphyUrl = `https://api.giphy.com/v1/gifs/search?limit=1&offset=0&rating=G&lang=en`
-
+const placeholderImg = 'https://cdn.shortpixel.ai/spai/w_1000+q_glossy+ret_img+to_webp/https://livingstonmachinery.com/wp-content/plugins/oem-showcase-inventory/assets/images/noimage-found.png'
 
 class Genrenator extends Component {
   state = {
@@ -17,7 +17,6 @@ class Genrenator extends Component {
   }
 
   componentDidMount() {
-    this.setState({gif: false})
     request.get(genreUrl)
       .then(res => {
         this.setState({
@@ -40,7 +39,10 @@ class Genrenator extends Component {
     return (
       <Container style={{ width: '50%' }}>
         <Card>
-          {this.state.gif ? <Card.Img variant="top" src={this.state.gif} /> : <Card.Text>No gif found :/</Card.Text>}
+        {this.state.gif
+          ? <Card.Img variant="top" src={this.state.gif} />
+          : <Card.Img variant="top" src={placeholderImg} />
+          }
           <Card.Body>
             {(this.state.genre === '') && <Card.Title>Loading genre...</Card.Title>}
             <Card.Title>{this.state.genre}</Card.Title>
